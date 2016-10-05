@@ -1,6 +1,8 @@
 package com.balamurugan.marshmallowsdfix;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -178,6 +180,17 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putBoolean("firstlaunch", true);
                 editor.commit();
+
+                AlertDialog alertbuilder = new AlertDialog.Builder(MainActivity.this).create();
+                alertbuilder.setTitle("Important!");
+                alertbuilder.setMessage("This app needs ROOT access and XPOSED Framework installed in the device to function as expected. If these words appear new to you, then this app is not for you! :)");
+                alertbuilder.setButton("Okay, I understand", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                alertbuilder.show();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
