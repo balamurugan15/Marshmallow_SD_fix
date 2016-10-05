@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.balamurugan.marshmallowsdfix.AboutActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:padding="@dimen/activity_horizontal_margin">
+
+
+            <TextView
+                android:id="@+id/abouttext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marshmallow SD fix"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#212121"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+
+            <TextView
+                android:id="@+id/contentabout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/abouttext"
+                android:text="Created by balamu96m@XDA. Tap to open official thread."
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#727272"
+                android:paddingTop="8dp"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+
+        </RelativeLayout>
+
+        <include layout="@layout/item_divider" />
+
+        <RelativeLayout
+            android:id="@+id/rl2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:padding="@dimen/activity_horizontal_margin">
+
+
+            <TextView
+                android:id="@+id/gplustext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Google+ connect"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#212121"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+
+            <TextView
+                android:id="@+id/gpluscontent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/gplustext"
+                android:text="Let's get connected on Google+. Tap to open."
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#727272"
+                android:paddingTop="8dp"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+
+        </RelativeLayout>
+
+        <include layout="@layout/item_divider" />
+
+        <RelativeLayout
+            android:id="@+id/rl3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:padding="@dimen/activity_horizontal_margin">
+
+
+            <TextView
+                android:id="@+id/aboutxposed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Xposed framework"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#212121"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+
+            <TextView
+                android:id="@+id/xposedContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aboutxposed"
+                android:paddingTop="8dp"
+                android:text="Kudos to rovo89@XDA for this awesome framework. Special thanks to C3C076@XDA for the GravityBox module! Tap to visit Xposed forums @XDA."
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#727272"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                ads:adSize="BANNER"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                ads:adUnitId="@string/banner_home_footer">
+            </com.google.android.gms.ads.AdView>
+
+
+
+        </RelativeLayout>
+
+</LinearLayout>
+</LinearLayout>

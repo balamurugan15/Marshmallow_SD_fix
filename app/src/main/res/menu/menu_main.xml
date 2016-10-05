@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context="com.legend.bm.sastrahub.pwi.LoggedIn">
+    <item android:id="@+id/reboot" android:title="Reboot"></item>
+    <item android:id="@+id/aboutmenu" android:title="About"></item>
+
+</menu>

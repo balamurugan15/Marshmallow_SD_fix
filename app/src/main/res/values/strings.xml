@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Marshmallow SD fix</string>
+    <string name="title_activity_activitybout">About</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="url_mmsdfix">http://forum.xda-developers.com/xposed/modules/xposed-marshmallow-sd-fix-write-t3403263</string>
+    <string name="url_mygplus">https://plus.google.com/u/0/+BalaMurugan15</string>
+    <string name="url_xposed">http://forum.xda-developers.com/xposed</string>
+
+    <string name="banner_home_footer">ca-app-pub-2785410464797004/4905257973</string>
+</resources>
