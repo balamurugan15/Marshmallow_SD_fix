@@ -36,6 +36,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        recyclerView.setAdapter(mAdapter);
+       // recyclerView.setAdapter(mAdapter);
 
 
 
@@ -134,17 +136,19 @@ public class MainActivity extends AppCompatActivity {
                     RemovePackage task = new RemovePackage();
 
                     task.packname = listItem.getPkgName();
+                    task.pos = position;
                     task.execute();
                     listItem.setSelected(false);
                 }
                 else {
                     AddPackage task = new AddPackage();
                     task.packname = listItem.getPkgName();
+                    task.pos = position;
                      task.execute();
                     listItem.setSelected(true);
                 }
-                appList.clear();
-                mAdapter.notifyDataSetChanged();
+               // appList.clear();
+              //  mAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -181,10 +185,8 @@ public class MainActivity extends AppCompatActivity {
 
         new LoadView().execute();
 
-
-
-
     }
+
 
     public interface ClickListener {
         void onClick(View view, int position);
@@ -253,6 +255,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean result) {
             bar.setVisibility(View.GONE);
+            recyclerView.setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();
         }
     }
@@ -328,6 +331,19 @@ public class MainActivity extends AppCompatActivity {
                 ListItem item = new ListItem(pkgname, applicationName,icon, isSelected );
                 appList.add(item);
             }
+
+          //  Collections.sort(appList, String.CASE_INSENSITIVE_ORDER);
+
+        Collections.sort(appList, new Comparator<ListItem>() {
+
+    /* This comparator will sort AppDetail objects alphabetically. */
+
+            @Override
+            public int compare(ListItem a1, ListItem a2) {
+                // String implements Comparable
+                return a1.getName().compareToIgnoreCase(a2.getName());
+            }
+        });
     }
 
     boolean checkTick(String pname){
@@ -422,6 +438,9 @@ public class MainActivity extends AppCompatActivity {
     private class AddPackage extends AsyncTask<Void, Void, Boolean> {
 
         String packname;
+        int pos;
+
+
 
         @Override
         protected void onPreExecute(){
@@ -438,7 +457,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean result) {
             Toast.makeText(getApplicationContext(), "Reboot device for changes to take effect", Toast.LENGTH_LONG).show();
-            new LoadView().execute();
+            appList.get(pos).setSelected(true);
+            mAdapter.notifyDataSetChanged();
+
+           // new LoadView().execute();
         }
     }
 
@@ -447,6 +469,7 @@ public class MainActivity extends AppCompatActivity {
     private class RemovePackage extends AsyncTask<Void, Void, Boolean> {
 
         String packname;
+        int pos;
 
         @Override
         protected void onPreExecute(){
@@ -463,7 +486,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean result) {
             Toast.makeText(getApplicationContext(), "Reboot device for changes to take effect", Toast.LENGTH_LONG).show();
-            new LoadView().execute();
+            appList.get(pos).setSelected(false);
+            mAdapter.notifyDataSetChanged();
+            //new LoadView().execute();
         }
     }
 
@@ -581,7 +606,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
         }
-
 
     return true;
     }
