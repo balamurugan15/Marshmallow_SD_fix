@@ -15,3 +15,39 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keep class * extends android.app.Activity
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+}
+-keep class com.google.** { *; }
+-keep class android.support.** { *; }
+-keep class com.balamurugan.marshmallowsdfix.MediaGranter
+
+
+
+# Suppress warnings if you are NOT using IAP:
+ -dontwarn com.google.**
+ -dontwarn android.support.**
+
+
+
+-keepattributes Signature
+
+# For using GSON @Expose annotation
+
+# Gson specific classes
+#-keep class com.google.gson.stream.** { *; }
+
+
+# The official support library.
+#-keep class android.support.v4.app.** { *; }
+#-keep interface android.support.v4.app.** { *; }
+
+#  Library JARs.
+#-keep class de.greenrobot.dao.** { *; }
+#-keep interface de.greenrobot.dao.** { *; }
+
+# Library projects.
+#-keep class com.actionbarsherlock.** { *; }
+#-keep interface com.actionbarsherlock.** { *; }

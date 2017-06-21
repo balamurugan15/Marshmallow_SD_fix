@@ -23,17 +23,11 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -45,7 +39,6 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -57,21 +50,17 @@ public class MainActivity extends AppCompatActivity {
     String tempFile;
     String pkgname;
 
-    private AdView mAdView;
 
 
     FileOutputStream outputStream;
     FileInputStream inputStream;
 
    // String FilePath = "/data/user/0/com.balamurugan.marshmallowsdfix/files/FileName.xml";
-    String FilePath;
     private List<ListItem> appList = new ArrayList<>();
     private RecyclerView recyclerView;
     private MyListAdapter mAdapter;
 
     private ProgressBar bar;
-
-    File theSharedPrefsFile;
 
 
 
@@ -80,12 +69,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAdView = (AdView) findViewById(R.id.adView1);
-        AdRequest adRequest = new AdRequest.Builder()
-               // .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-               // .addTestDevice("851FAD29862B8E8FF51B83F3B0909E17")
-                .build();
-        mAdView.loadAd(adRequest);
 
      /*   mAdView.setAdListener(new AdListener() {
             @Override
@@ -160,8 +143,6 @@ public class MainActivity extends AppCompatActivity {
         }));
 
         outputStream = null;
-
-        File temp = new File(getFilesDir() + "/NewFile.xml" );
 
 
         String content = "<sdfix />\n";
@@ -278,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
 
 /////////////// Make local copy, open and read xml
 
-    private void openXml(){
+ /*   private void openXml(){
 
         Process process = null;
         DataOutputStream os = null;
@@ -305,12 +286,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        tempFile = getFilesDir() + "/temp.xml";
+   //     tempFile = getFilesDir() + "/temp.xml";
 
 
     }
 
-
+*/
 
 
 /////////////// Populate recycler view
@@ -384,7 +365,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    void modifyXml(String pname){
+  /*  void modifyXml(String pname){
 
         try {
 
@@ -438,7 +419,7 @@ public class MainActivity extends AppCompatActivity {
       //  moveToData();
 
 
-    }
+    } */
 
 
 
@@ -650,31 +631,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-    @Override
-    public void onPause() {
-        if (mAdView != null) {
-            mAdView.pause();
-        }
-        super.onPause();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mAdView != null) {
-            mAdView.resume();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        if (mAdView != null) {
-            mAdView.destroy();
-        }
-        super.onDestroy();
-    }
 
 
 

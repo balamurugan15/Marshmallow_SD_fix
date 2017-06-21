@@ -9,26 +9,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 public class AboutActivity extends AppCompatActivity {
 
     Context context = this;
 
-    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        mAdView = (AdView) findViewById(R.id.adView2);
-        AdRequest adRequest = new AdRequest.Builder()
-               // .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-               // .addTestDevice("851FAD29862B8E8FF51B83F3B0909E17")
-                .build();
-        mAdView.loadAd(adRequest);
 
      /*   mAdView.setAdListener(new AdListener() {
             @Override
@@ -105,33 +95,7 @@ public class AboutActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
-
-    @Override
-    public void onPause() {
-        if (mAdView != null) {
-            mAdView.pause();
-        }
-        super.onPause();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mAdView != null) {
-            mAdView.resume();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        if (mAdView != null) {
-            mAdView.destroy();
-        }
-        super.onDestroy();
-    }
 
 }
